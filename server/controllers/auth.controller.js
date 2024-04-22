@@ -1,7 +1,7 @@
 import User from "../models/user.model.js";
 import brycpt from "bcrypt";
 
-const signUp = async (req, res) => {
+const signUp = async (req, res, next) => {
   const { username, email, password } = req.body;
   //check the incoming data
   if (!username || !email || !password) {
@@ -18,7 +18,7 @@ const signUp = async (req, res) => {
     await user.save();
     res.status(201).json({ message: "User created successfully" });
   } catch (err) {
-    res.send(err.message);
+    next(err);
   }
 };
 
