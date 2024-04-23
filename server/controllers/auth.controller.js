@@ -4,9 +4,9 @@ import brycpt from "bcrypt";
 const signUp = async (req, res, next) => {
   const { username, email, password } = req.body;
   //check the incoming data
-  if (!username || !email || !password) {
-    return res.status(400).json({ message: "All fields are required" });
-  }
+  // if (!username || !email || !password) {
+  //   return res.status(400).json({ message: "All fields are required" });
+  // }
   // check if user already exists
   const userExists = await User.findOne({ email: email });
   if (userExists) {
